@@ -14,11 +14,12 @@ import { ItemDetailsPage } from '../item-details/item-details';
  * @param {string} birth_year - Birth Year of the person involved in mission.
  * @param {string} icon - Icon to be shown for the mission.
  */
-interface MissionDetail {
+export interface MissionDetailInterface {
   name: string,
   gender: string,
   birth_year: string,
-  icon: string
+  icon: string,
+  url: string
 };
 
 @Component({
@@ -37,7 +38,7 @@ export class ListPage {
   nextPageNumber: number;
 
   // List of Mission Items.
-  items: Array<MissionDetail>;
+  items: Array<MissionDetailInterface>;
 
   /**
    * @constructor
@@ -52,7 +53,7 @@ export class ListPage {
     'american-football', 'boat', 'bluetooth', 'build'];
 
     this.items = [];
-    this.nextPageNumber = 1;
+    this.nextPageNumber = 0;
   }
 
 
@@ -64,7 +65,8 @@ export class ListPage {
    */
   itemTapped(event, item) {
     this.navCtrl.push(ItemDetailsPage, {
-      item: item
+      item: item,
+      id: this.getItemId(item)
     });
   }
 
@@ -117,6 +119,14 @@ export class ListPage {
    */
   loadMore() {
     this.getMissions(this.nextPageNumber);
+  }
+
+  /**
+   * Get item id from a give item
+   * @param {MissionDetailInterface} - item. Object of type mission
+   */
+  getItemId(item:MissionDetailInterface):number {
+    return Number(item.url.split('/').slice(-2, -1)[0]);
   }
 
 }

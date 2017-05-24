@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <button menuToggle *ngIf="!selectedItem">
+    <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Mission Details</ion-title>
@@ -17,5 +17,8 @@
   </h4>
   <h4 text-center *ngIf="selectedItem">
     Birth Year <b>{{selectedItem.birth_year}}</b>
+  </h4>
+  <h4 text-center  *ngIf="!selectedItem && isError">
+    Page does not exist. Please check the URL.
   </h4>
 </ion-content>

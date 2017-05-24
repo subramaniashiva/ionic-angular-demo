@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { LoginPage } from '../pages/login/login';
@@ -16,6 +16,20 @@ import { LoadingServiceProvider } from '../providers/loading-service/loading-ser
 
 import { HttpModule }    from '@angular/http';
 
+/*
+ * Configuring the deep links in the application
+ * Invalid URLS are redirected to login page temporarily
+ */
+export const deepLinkConfig: DeepLinkConfig = {
+  links: [
+    { component: LoginPage, name: 'Login Page', segment: '*' },
+    { component: LoginPage, name: 'Login Page', segment: 'login' },
+    { component: HelloIonicPage, name: 'Dashboard Page', segment: 'dashboard' },
+    { component: ListPage, name: 'Missions Page', segment: 'missions' },
+    { component: ItemDetailsPage, name: 'Mission Details Page', segment: 'missions/:id', defaultHistory: [ ListPage ] },
+  ]
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,7 +40,7 @@ import { HttpModule }    from '@angular/http';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {}, deepLinkConfig),
     HttpModule
   ],
   bootstrap: [IonicApp],
