@@ -11,6 +11,8 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { MissionListServiceProvider } from '../providers/mission-list-service/mission-list-service';
+import { LoadingServiceProvider } from '../providers/loading-service/loading-service';
 
 import { HttpModule }    from '@angular/http';
 
@@ -39,7 +41,9 @@ import { HttpModule }    from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AuthServiceProvider,
+    MissionListServiceProvider,
+    LoadingServiceProvider
   ]
 })
 export class AppModule {}
