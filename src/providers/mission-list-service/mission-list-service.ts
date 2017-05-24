@@ -25,7 +25,7 @@ export class MissionListServiceProvider {
    * @param {number} pageNumber - Page Number of missions list to be retireved.
    * @return {Promise} Promise which resolves to an array of mission objects
    */
-  public getMissions(pageNumber?:number) {
+  public getMissions(pageNumber?:number): Promise<any> {
     let url = API.root + API.path.missionList;
     if(pageNumber) {
       url = API.root + API.path.missionListPage + pageNumber.toString();
@@ -34,6 +34,21 @@ export class MissionListServiceProvider {
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
+  }
+
+  /**
+   * Used to get mission by id.
+   * @param {number} id - Id of the mission to be retreived.
+   * @return {Promise} Promise which resolves to a mission object
+   */
+  public getMissionById(id?:number): Promise<any> {
+    if(id) {
+      return this.http.get(API.root + API.path.missionById + id.toString())
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+    }
+
   }
 
 
