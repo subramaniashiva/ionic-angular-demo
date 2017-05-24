@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>My First List</ion-title>
+    <ion-title>Available Missions</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,10 +11,15 @@
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
+      {{item.name}}
       <div class="item-note" item-right>
-        {{item.note}}
+        {{item.gender}}
       </div>
     </button>
   </ion-list>
+  <ion-row>
+    <ion-col>
+      <button ion-button (click)="loadMore()" [disabled]=!nextPageNumber>Load More Missions</button>
+    </ion-col>
+  </ion-row>
 </ion-content>
