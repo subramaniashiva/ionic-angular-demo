@@ -8,7 +8,8 @@ const API = {
     // Temporary API path for login.
     login: '/people/1',
     missionList: '/people/',
-    missionListPage: '/people/?page='
+    missionListPage: '/people/?page=',
+    missionById: '/people/'
   }
 }
 export default API;
