@@ -6,7 +6,9 @@ const API = {
   root: 'http://swapi.co/api',
   path: {
     // Temporary API path for login.
-    login: '/people/1'
+    login: '/people/1',
+    missionList: '/people/',
+    missionListPage: '/people/?page='
   }
 }
 export default API;

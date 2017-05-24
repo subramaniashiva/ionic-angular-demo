@@ -3,16 +3,19 @@
     <button menuToggle *ngIf="!selectedItem">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Item Details</ion-title>
+    <ion-title>Mission Details</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <h3 text-center *ngIf="selectedItem">
-    {{selectedItem.title}}
+    {{selectedItem.name}}
     <ion-icon [name]="selectedItem.icon"></ion-icon>
   </h3>
   <h4 text-center *ngIf="selectedItem">
-    You navigated here from <b>{{selectedItem.title}}</b>
+    Gender <b>{{selectedItem.gender}}</b>
+  </h4>
+  <h4 text-center *ngIf="selectedItem">
+    Birth Year <b>{{selectedItem.birth_year}}</b>
   </h4>
 </ion-content>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 // Import API.
@@ -12,12 +11,16 @@ const messages = {
   emailPassWrong: 'Email or Password is wrong',
   errOccured: 'An error occured'
 };
+
 /**
  * Class detailing the structure of a user Object.
  */
 export class User {
+
   name: string;
+
   gender: string;
+
   /**
    * @constructor
    * @param {string} name - name of the user.
@@ -34,8 +37,10 @@ export class User {
  */
 @Injectable()
 export class AuthServiceProvider {
+
   // Stores the current user information.
   currentUser: User;
+
   /**
    * Used to login to the application.
    * This method mocks the login. It fires a request to get one people from API.
@@ -65,6 +70,8 @@ export class AuthServiceProvider {
       }).catch(this.handleError);
     }
   }
+
+
   /**
    * Used to handle error from the login API request.
    * Logs the error in console.
@@ -77,6 +84,8 @@ export class AuthServiceProvider {
     console.error(messages.errOccured, error);
     return Promise.reject(error.message || error);
   }
+
+
   /**
    * Gets the current user info.
    * @return {User} Object of type User.
@@ -84,6 +93,8 @@ export class AuthServiceProvider {
   public getUserInfo() : User {
     return this.currentUser;
   }
+
+
   /**
    * Logsout the user from the application.
    * Set the current user to null.
@@ -93,6 +104,8 @@ export class AuthServiceProvider {
     this.currentUser = null;
     return Promise.resolve(true);
   }
+
+
   /**
    * @constructor
    * @param {Http} http - http module from angular.

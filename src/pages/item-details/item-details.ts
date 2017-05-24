@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { NavController, NavParams } from 'ionic-angular';
 
 
@@ -7,6 +6,10 @@ import { NavController, NavParams } from 'ionic-angular';
   selector: 'page-item-details',
   templateUrl: 'item-details.html'
 })
+
+/**
+ * Class Managing the Details page view.
+ */
 export class ItemDetailsPage {
   selectedItem: any;
 

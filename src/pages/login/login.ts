@@ -1,8 +1,22 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Loading, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { LoadingServiceProvider } from '../../providers/loading-service/loading-service';
+
 import { ListPage } from '../list/list';
+
+// Messages related to login screen
+const messages = {
+  loading: 'Loading...',
+  OkButton: 'OK',
+  signUp: 'Sign Up',
+  clickedSignUp: 'Clicked SignUp',
+  loginfailed: 'Login Failed',
+  emailPassWrong: 'Email or Password is Wrong',
+  error: 'Error',
+  defaultAlert: 'Alert'
+}
 
 /**
  * Generated class for the LoginPage page.
@@ -19,63 +33,54 @@ import { ListPage } from '../list/list';
  * Class Managing the Login Page of the application.
  */
 export class LoginPage {
-  // Loading screen for the login page.
-  loading: Loading;
+
   // Credentials of the user.
   credentials = { email: '', password: ''};
+
   /**
    * @constructor
    * @param {NavController} navCtrl
    * @param {NavParams} navParams
    * @param {AuthServiceProvider} auth
    * @param {AlertController} alertCtrl
-   * @param {LoadingController} loadingCtrl
+   * @param {LoadingServiceProvider} loadingService
    */
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public auth: AuthServiceProvider,
     public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController) {
+    public loadingService: LoadingServiceProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-  /**
-   * Shows the loading screen.
-   */
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Loading...',
-      dismissOnPageChange: true
-    });
-    this.loading.present();
-  }
+
   /**
    * Shows the alert window to the user.
    * @param {string} title - Title of the alert. Default is Alert.
    * @param {string} subTitle - Body of the alert.
    */
-  showAlert(title:string='Alert', subTitle:string) {
-    this.loading.dismiss();
-
+  showAlert(title:string=messages.defaultAlert, subTitle:string) {
     let alert = this.alertCtrl.create({
       title,
       subTitle,
-      buttons: ['OK']
+      buttons: [messages.OkButton]
     });
 
     alert.present(prompt);
   }
+
+
   /**
    * Invoked when clicking the SignUp button.
    * Shows an alert for now.
    * Implementation pending.
    */
   public signUp() {
-    this.showLoading();
-    this.showAlert('Signup', 'Clicked SignUp');
+    this.loadingService.showLoading(messages.loading);
+    this.showAlert(messages.signUp, messages.clickedSignUp);
+    this.loadingService.dismissLoading();
   }
+
+
   /**
    * Invoked when clicking the login buttin.
    * Shows a loading screen and invokes the Auth Service.
@@ -83,16 +88,17 @@ export class LoginPage {
    * If not succesful from Auth Service, shows an alert.
    */
   public login() {
-    this.showLoading();
+    this.loadingService.showLoading(messages.loading);
     this.auth.login(this.credentials).then((res) => {
       if(res) {
         this.navCtrl.setRoot(ListPage);
       } else {
-        this.showAlert('Login Failed', 'Email or Password is wrong');
+        this.showAlert(messages.loginfailed, messages.emailPassWrong);
       }
     }).catch((err) => {
-      this.showAlert('Error', err);
+      this.showAlert(messages.error, err);
     });
+    this.loadingService.dismissLoading();
   }
 
 }
