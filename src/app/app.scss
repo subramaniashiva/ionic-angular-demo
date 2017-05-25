@@ -17,3 +17,32 @@
 
 @import "../theme/variables";
 @import "../theme/base";
+
+.c-nav {
+  background-color: #e0e3eb;
+  .c-nav__menuList {
+    background-color: inherit;
+  }
+  .c-menuList {
+    .c-menuList__item, .c-menuList__btn {
+      background-color: #e0e3eb;
+    }
+    .c-menuList__item {
+      cursor: pointer;
+      .label {
+        margin: 0;
+      }
+    }
+    .c-menuList__btn {
+      font-size: map-get($text-size, t3);
+    }
+  }
+  .o-logout {
+    cursor: pointer;
+  }
+}
+.l-nav {
+  .l-nav__profileImg {
+    margin: 20px 0;
+  }
+}
