@@ -12,13 +12,16 @@ import { ItemDetailsPage } from '../item-details/item-details';
  * @param {string} name - Name of the mission.
  * @param {string} gender - Gender of the person involved in mission.
  * @param {string} birth_year - Birth Year of the person involved in mission.
- * @param {string} icon - Icon to be shown for the mission.
+ * @param {string} image_small - Url for the small image.
+ * @param {string} image_big - Url for the big image.
+ * @param {string} url - Unique Url for the mission.
  */
 export interface MissionDetailInterface {
   name: string,
   gender: string,
   birth_year: string,
-  icon: string,
+  image_small: string,
+  image_big: string,
   url: string
 };
 
@@ -31,8 +34,7 @@ export interface MissionDetailInterface {
  */
 export class ListPage {
 
-  // Icons used to show against each character.
-  icons: string[];
+  imagePath: string = 'assets/images/missions-list/';
 
   // Next page number to be fetched.
   nextPageNumber: number;
@@ -49,8 +51,6 @@ export class ListPage {
    */
   constructor(public missionListService: MissionListServiceProvider, public navCtrl: NavController,
     public navParams: NavParams, public loadingService: LoadingServiceProvider) {
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
 
     this.items = [];
     this.nextPageNumber = 0;
@@ -102,7 +102,9 @@ export class ListPage {
     this.missionListService.getMissions(pageNumber).then(res => {
       this.nextPageNumber = Number(this.getNextPageNumber(res.next));
       res.results && res.results.map((item) => {
-        item.icon = this.icons[Math.floor(Math.random() * this.icons.length)];
+        let imageRandNumber = (Math.floor(Math.random() * 5) + 1);
+        item.image_small = this.imagePath + imageRandNumber.toString() + '-small.png';
+        item.image_big = this.imagePath + imageRandNumber.toString() + '-big.png';
         this.items.push(item);
       });
     }).catch((err) => {
