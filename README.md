@@ -62,6 +62,13 @@ This project uses Git Flow for developing.
  - **feature/x** - Feature branch, branched off from develop. To develop a new feature create new feature branch from the develop and start. Merged into develop when the feature is ready.
  - **fix/x** - Branch to fix bugs in the application. Branched off from develop and merged back when ready.
 
+Coding Guidelines
+-------
+- JSDoc commenting structure is followed throughout the code. This will be useful if we want to generate documentation for the project in future.
+- BEM/OCSS is followed for sass files. UI is divided into objects, components, layout and the class are prefixed with o-, c-, l- respectively. Items of the component are mentioned with __ in the class.
+- Strict typing is followed in all JS files.
+- API path is loaded from a separate utils file. It will easier to change the API path in future.
+
 Using the application
 -------
 - To log in to the application use 'test' for both email and password.
@@ -70,7 +77,6 @@ Using the application
 - User can log out from the application by clicking the power icon at the bottom of the menu. Again log out is mocked, but it actually calls the log out method from Auth service and then logs out the user. The log out method in Auth service just sets current user property to null and sets the root view as Login component. This will be useful when we replace the logout method with actual logout method in future
 - When the user clicks 'More Info' button in the mission list page, it pushes another detail view. The detail view page fires another API request to get the planet details and displays it to the user.
 - The application is enabled with URL routing. User can directly enter any URL and the application just works fine.
-- JSDoc commenting structure is followed throughout the code. This will be useful if we want to generate documentation for the project in future.
 
 Future Improvements
 -------
@@ -78,3 +84,4 @@ Future Improvements
 - Proper error logging service instead of console logs.
 - Add Chat view.
 - Add Tabs in Mission Details page.
+- Making the application progressive.
