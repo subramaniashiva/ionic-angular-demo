@@ -4,8 +4,6 @@ export class AuthServiceProviderMock {
 
   public login() {}
 
-  private handleError() {}
-
   public getUserInfo(): User {
     return {name: '', gender: ''};
   }
