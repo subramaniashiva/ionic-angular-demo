@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Mission Details</ion-title>
+    <button menuToggle class="no-border" color="dark" ion-button outline>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="selectedMission">
+    <ion-card-header text-center>
+      <p class="bold">{{selectedMission.name}}</p>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-12>
+          <img src={{selectedMission.image_big}} alt="Mission Details Image" title="Mission Details Image" />
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <p>
+            <span class="bold">Birth Year: </span>
+            {{selectedMission.birth_year}}
+          </p>
+        </ion-col>
+        <ion-col col-6 text-right>
+          <p>
+            <span class="bold">Gender: </span>
+            {{selectedMission.gender}}
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <p>
+            <span class="bold">Height: </span>
+            {{selectedMission.height}}
+          </p>
+        </ion-col>
+        <ion-col col-6 text-right>
+          <p>
+            <span class="bold">Mass: </span>
+            {{selectedMission.mass}}
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <p>
+            <span class="bold">Hair Color: </span>
+            {{selectedMission.hair_color}}
+          </p>
+        </ion-col>
+        <ion-col col-6 text-right>
+          <p>
+            <span class="bold">Skin Color: </span>
+            {{selectedMission.skin_color}}
+          </p>
+        </ion-col>
+      </ion-row>
+      <div  *ngIf="planetDetails">
+
+        <ion-row>
+          <ion-col col-12 text-center>
+            <p class="bold">Planet Details</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <p>
+              <span class="bold">Name: </span>
+              {{planetDetails.name}}
+            </p>
+          </ion-col>
+          <ion-col col-6 text-right>
+            <p>
+              <span class="bold">Rotation Period: </span>
+              {{planetDetails.rotation_period}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <p>
+              <span class="bold">Terrain: </span>
+              {{planetDetails.terrain}}
+            </p>
+          </ion-col>
+          <ion-col col-6 text-right>
+            <p>
+              <span class="bold">Population: </span>
+              {{planetDetails.population}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <p>
+              <span class="bold">Climate: </span>
+              {{planetDetails.climate}}
+            </p>
+          </ion-col>
+          <ion-col col-6 text-right>
+            <p>
+              <span class="bold">Orbital Period: </span>
+              {{planetDetails.orbital_period}}
+            </p>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <h4 text-center  *ngIf="!selectedMission && isError">
+    Page does not exist. Please check the URL.
+  </h4>
+</ion-content>
