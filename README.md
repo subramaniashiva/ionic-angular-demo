@@ -24,9 +24,13 @@ Setup
 
 `npm run lint`
 
-4) To build the project for production, run
+5) To build the project for production, run
 
 `npm run build`
+
+6) To run unti tests for the project. (Please note that the coverage is not 100%)
+
+`npm run test`
 
 
 Tech Stack
@@ -80,7 +84,7 @@ Using the application
 
 Future Improvements
 -------
-- Enable unit testing for the application.
+- Increase coverage for unit testing.
 - Proper error logging service instead of console logs.
 - Add Chat view.
 - Add Tabs in Mission Details page.
