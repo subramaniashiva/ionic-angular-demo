@@ -11,6 +11,12 @@ const messages = {
   loading: 'Loading...',
   OkButton: 'OK',
   signUp: 'Sign Up',
+  forgotPass: 'Forgot Password',
+  fbSignIn: 'FB Sign In',
+  termsCond: 'Terms and Conditions',
+  clickedTerms: 'Clicked Terms and Conditions',
+  clickedFbSign: 'Clicked FB Sign In',
+  clickedforPass: 'Clicked Forgot Password',
   clickedSignUp: 'Clicked SignUp',
   loginfailed: 'Login Failed',
   emailPassWrong: 'Email or Password is Wrong',
@@ -78,6 +84,37 @@ export class LoginPage {
     this.loadingService.showLoading(messages.loading);
     this.showAlert(messages.signUp, messages.clickedSignUp);
     this.loadingService.dismissLoading();
+  }
+
+  /**
+   * Invoked when clicking the forgot password button.
+   * Shows an alert for now.
+   * Implementation pending.
+   */
+  public forgotPass() {
+    this.loadingService.showLoading(messages.loading);
+    this.showAlert(messages.forgotPass, messages.clickedforPass);
+    this.loadingService.dismissLoading();
+  }
+
+  /**
+   * Invoked when clicking the FB Signin button.
+   * Shows an alert for now.
+   * Implementation pending.
+   */
+  public fbSignIn() {
+    this.loadingService.showLoading(messages.loading);
+    this.showAlert(messages.fbSignIn, messages.clickedFbSign);
+    this.loadingService.dismissLoading();
+  }
+
+  /**
+   * Invoked when clicking the terms and conditions button.
+   * Shows an alert for now.
+   * Implementation pending.
+   */
+  public termsConditions() {
+    this.showAlert(messages.termsCond, messages.clickedTerms);
   }
 
 

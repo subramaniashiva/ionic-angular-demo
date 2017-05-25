@@ -1,0 +1,10 @@
+@import "./variables";
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: map-get($colors, primary);
+}
