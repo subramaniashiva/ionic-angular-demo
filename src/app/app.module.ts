@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-
 import { MyApp } from './app.component';
 
 import { LoginPage } from '../pages/login/login';
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 
@@ -24,7 +24,7 @@ export const deepLinkConfig: DeepLinkConfig = {
   links: [
     { component: LoginPage, name: 'Login Page', segment: '*' },
     { component: LoginPage, name: 'Login Page', segment: 'login' },
-    { component: HelloIonicPage, name: 'Dashboard Page', segment: 'dashboard' },
+    { component: DashboardPage, name: 'Dashboard Page', segment: 'dashboard' },
     { component: ListPage, name: 'Missions Page', segment: 'missions' },
     { component: ItemDetailsPage, name: 'Mission Details Page', segment: 'missions/:id', defaultHistory: [ ListPage ] },
   ]
@@ -34,7 +34,7 @@ export const deepLinkConfig: DeepLinkConfig = {
   declarations: [
     MyApp,
     LoginPage,
-    HelloIonicPage,
+    DashboardPage,
     ItemDetailsPage,
     ListPage
   ],
@@ -47,7 +47,7 @@ export const deepLinkConfig: DeepLinkConfig = {
   entryComponents: [
     MyApp,
     LoginPage,
-    HelloIonicPage,
+    DashboardPage,
     ItemDetailsPage,
     ListPage
   ],
