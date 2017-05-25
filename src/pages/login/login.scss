@@ -1,0 +1,55 @@
+@import "../../theme/variables";
+page-login {
+  .c-logo {
+    .c-logo__img {
+      display: block;
+      margin: 0 auto;
+    }
+    .c-logo__text {
+      font-size: map-get($text-size, t2);
+    }
+  }
+  .l-signIn {
+    .o-forgotBtn {
+      margin-top: -25px;
+    }
+  }
+  .o-forgotBtn {
+    float: right;
+    text-transform: none;
+    padding: 0;
+    &:hover {
+      &:not(.disable-hover) {
+        background-color: initial;
+      }
+    }
+  }
+  .o-fbSignIn {
+    font-size: map-get($text-size, t3);
+    ion-icon {
+      font-size: map-get($text-size, t1);
+      color: map-get($colors, light);
+      cursor: pointer;
+    }
+  }
+  .l-signInSignUp {
+    margin: 25px 0;
+  }
+  .o-signInBtn {
+    text-transform: none;
+    font-size: map-get($text-size, t3);
+  }
+  .o-signUpBtn {
+    text-transform: none;
+    font-size: map-get($text-size, t3);
+  }
+  .o-termsBtn {
+    text-transform: none;
+    text-decoration: underline;
+    &:hover {
+      &:not(.disable-hover) {
+        background-color: initial;
+      }
+    }
+  }
+}

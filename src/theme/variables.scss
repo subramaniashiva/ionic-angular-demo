@@ -24,13 +24,17 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    #202835,
+  secondary:  #202835,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #a1b2c2,
+  dark:       #202835,
+  background: #eaedf5
 );
 
+$background-ios-color: #eaedf5;
+$background-md-color: #eaedf5;
+$background-wp-color: #eaedf5;
 
 // App iOS Variables
 // --------------------------------------------------
@@ -76,3 +80,14 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+// Typography
+
+$text-size: (
+  t1: 36px,
+  t2: 24px,
+  t3: 18px,
+  t4: 14px,
+  t5: 12px,
+  t6: 10px
+);

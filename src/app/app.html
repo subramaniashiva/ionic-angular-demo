@@ -1,17 +1,29 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" persistent="true">
 
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Pages</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
-    <ion-list>
-      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+  <ion-content class="c-nav l-nav">
+    <ion-row>
+      <ion-col text-center>
+        <img class="l-nav__profileImg" src="assets/images/menu/default-profile-pic.png" alt="Profile Picture" title="Profile Picture"/>
+      </ion-col>
+    </ion-row>
+    <ion-list class="c-nav__menuList c-menuList" no-lines>
+      <ion-item class="c-menuList__item" *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-row>
+          <ion-col col-2></ion-col>
+          <ion-col col-8>
+            <ion-icon color="light" name="image" item-left></ion-icon>
+            <button class="c-menuList__btn" item-right>
+              {{p.title}}
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
     </ion-list>
+    <ion-row>
+      <ion-col text-center>
+        <ion-icon class="o-logout" color="light" name="power" (click)="logout()"></ion-icon>
+      </ion-col>
+    </ion-row>
   </ion-content>
 
 </ion-menu>

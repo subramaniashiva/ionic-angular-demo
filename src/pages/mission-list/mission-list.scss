@@ -1,0 +1,65 @@
+page-mission-list {
+  .c-missionCard {
+    .c-mcHeader {
+      .c-mcHeader__img {
+        @media(min-width: map-get($grid-breakpoints, md)) {
+          max-width: 114px;
+        }
+      }
+      .c-mcHeader__title {
+        .title__name {
+          font-weight: bold;
+          font-size: map-get($text-size, t3);
+        }
+      }
+      .title__gender, .info__year, .info__eye {
+        color: map-get($colors, light);
+      }
+    }
+
+    .c-mcContent {
+      .c-mcContent__imgCont {
+        padding: 0;
+        @media(min-width: map-get($grid-breakpoints, md)) {
+          background-color: map-get($colors, dark);
+        }
+        .c-mcContent__img {
+          @media(min-width: map-get($grid-breakpoints, md)) {
+            max-width: 50%;
+            margin: 0 auto;
+          }
+        }
+      }
+      .c-mcContent__info {
+        .o-moreInfo {
+          text-transform: initial;
+        }
+      }
+    }
+  }
+  .o-loadMore {
+    text-transform: initial;
+  }
+  .l-missionCard {
+    .l-mcHeader {
+      padding-left: 0;
+      padding-right: 15px;
+
+      .l-mcHeader__info {
+        margin-top: 3px;
+      }
+    }
+    .l-mcContent {
+      padding: 0;
+      .l-mcContent__info {
+        padding: 0;
+        .l-info__cont {
+          padding: 5px 15px;
+        }
+        .o-moreInfo {
+          margin: 15px 0 0 0;
+        }
+      }
+    }
+  }
+}

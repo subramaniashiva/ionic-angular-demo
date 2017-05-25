@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar>
+    <ion-row>
+      <ion-col>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-8 text-center>
+        <ion-title class="full-height">Available Missions</ion-title>
+      </ion-col>
+      <ion-col text-right>
+        <button class="no-border" color="dark" ion-button outline small text-right>
+          <ion-icon name="options"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="c-missionCard l-missionCard" *ngFor="let item of items">
+    <ion-card-header class="c-missionCard__header l-mcHeader c-mcHeader">
+      <ion-row>
+        <ion-col class="c-mcHeader__img">
+          <img src="assets/images/mission-list/default-profile-pic.png" title="Mission Profile Photo" title="Mission Profile Photo" />
+        </ion-col>
+        <ion-col class="c-mcHeader__title" col-6 col-md-6>
+          <p class="title__name">{{item.name}}</p>
+          <p class="title__gender">{{item.gender}}</p>
+        </ion-col>
+        <ion-col class="c-mcHeader__info l-mcHeader__info" text-right>
+          <p class="info__year">{{item.birth_year}}</p>
+          <p class="info__eye">{{item.eye_color}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content class="c-missionCard__content c-mcContent l-mcContent">
+      <ion-row>
+        <ion-col col-12 class="c-mcContent__imgCont">
+          <img class="c-mcContent__img" src={{item.image_small}} alt="Mission Image Small" title="Mission Image Big" />
+        </ion-col>
+        <ion-col class="c-mcContent__info l-mcContent__info" col-12>
+          <ion-row>
+            <ion-col col-6 class="c-info__cont l-info__cont">
+              <p>
+                <span class="bold">Height: </span>
+                {{item.height}}
+              </p>
+            </ion-col>
+            <ion-col text-right col-6 class="c-info__cont l-info__cont">
+              <p>
+                <span class="bold">Mass: </span>
+                {{item.mass}}
+              </p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6 class="c-info__cont l-info__cont">
+              <p>
+                <span class="bold">Hair Color: </span>
+                {{item.hair_color}}
+              </p>
+            </ion-col>
+            <ion-col text-right col-6 class="c-info__cont l-info__cont">
+              <p>
+                <span class="bold">Skin Color: </span>
+                {{item.skin_color}}
+              </p>
+            </ion-col>
+          </ion-row>
+          <button class="o-moreInfo" color="light" ion-button full (click)="itemTapped($event, item)">More Info</button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-row>
+    <ion-col>
+      <button class="o-loadMore" ion-button full (click)="loadMore()" [disabled]=!nextPageNumber>Load More Missions</button>
+    </ion-col>
+  </ion-row>
+</ion-content>
