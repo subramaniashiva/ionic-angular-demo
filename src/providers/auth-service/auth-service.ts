@@ -67,7 +67,8 @@ export class AuthServiceProvider {
           else {
             return Promise.reject(messages.emailPassWrong);
           }
-      }).catch(this.handleError);
+        })
+        .catch(this.handleError);
     }
   }
 
