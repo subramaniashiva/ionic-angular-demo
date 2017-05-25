@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'page-hello-ionic',
-  templateUrl: 'hello-ionic.html'
+  selector: 'page-dashboard',
+  templateUrl: 'dashboard.html'
 })
 /**
  * Class Managing the dashboard page.
  */
-export class HelloIonicPage {
+export class DashboardPage {
   constructor() {
 
   }
