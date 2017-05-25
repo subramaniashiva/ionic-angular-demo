@@ -22,6 +22,12 @@ const messages = {
   emailPassWrong: 'Email or Password is Wrong',
   error: 'Error',
   defaultAlert: 'Alert'
+};
+
+// Interface for credentials.
+interface CredentialsInterface {
+  email: string,
+  password: string
 }
 
 /**
@@ -41,7 +47,7 @@ const messages = {
 export class LoginPage {
 
   // Credentials of the user.
-  credentials = { email: '', password: ''};
+  credentials:CredentialsInterface = { email: '', password: ''};
 
   /**
    * @constructor
