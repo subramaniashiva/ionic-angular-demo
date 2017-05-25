@@ -41,23 +41,35 @@ export class MissionListServiceProvider {
    * @param {number} id - Id of the mission to be retreived.
    * @return {Promise} Promise which resolves to a mission object
    */
-  public getMissionById(id?:number): Promise<any> {
+  public getMissionById(id:number): Promise<any> {
     if(id) {
       return this.http.get(API.root + API.path.missionById + id.toString())
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+        .toPromise()
+        .then(response => response.json())
+        .catch(this.handleError);
     }
 
   }
 
+  /**
+   * Used to get planet details by id.
+   * @param {number} id - Id of the planet to be retreived.
+   * @return {Promise} Promise which resolves to a planet object
+   */
+  public getPlanetById(id:number): Promise<any> {
+    if(id) {
+      return this.http.get(API.root + API.path.planetById + id.toString())
+        .toPromise()
+        .then(response => response.json())
+        .catch(this.handleError);
+    }
+  }
 
   /**
    * Used to handle error from the login API request.
    * Logs the error in console.
    * Ideally the error should be pushed to third party log service.
    * @param {Any} error - Error object.
-   * @param {string} credentials.email - Email of the user.
    * @return {Promise} A rejected Promise.
    */
   private handleError(error: any): Promise<any> {

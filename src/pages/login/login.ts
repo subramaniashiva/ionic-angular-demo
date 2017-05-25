@@ -4,7 +4,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LoadingServiceProvider } from '../../providers/loading-service/loading-service';
 
-import { ListPage } from '../list/list';
+import { MissionListPage } from '../mission-list/mission-list';
 
 // Messages related to login screen
 const messages = {
@@ -24,7 +24,11 @@ const messages = {
   defaultAlert: 'Alert'
 };
 
-// Interface for credentials.
+/**
+ * @interface - User credential
+ * @param {string} email - Email of the user.
+ * @param {string} password - Password of the user.
+ */
 interface CredentialsInterface {
   email: string,
   password: string
@@ -132,16 +136,20 @@ export class LoginPage {
    */
   public login() {
     this.loadingService.showLoading(messages.loading);
-    this.auth.login(this.credentials).then((res) => {
-      if(res) {
-        this.navCtrl.setRoot(ListPage);
-      } else {
-        this.showAlert(messages.loginfailed, messages.emailPassWrong);
-      }
-    }).catch((err) => {
-      this.showAlert(messages.error, err);
-    });
-    this.loadingService.dismissLoading();
+    this.auth.login(this.credentials)
+      .then((res) => {
+        if(res) {
+          this.navCtrl.setRoot(MissionListPage);
+        } else {
+          this.showAlert(messages.loginfailed, messages.emailPassWrong);
+        }
+      })
+      .catch((err) => {
+        this.showAlert(messages.error, err);
+      })
+      .then(() => {
+        this.loadingService.dismissLoading();
+      });
   }
 
 }

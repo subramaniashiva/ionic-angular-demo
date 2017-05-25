@@ -40,6 +40,9 @@
   }
   .o-logout {
     cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    font-size: map-get($text-size, t1);
   }
 }
 .l-nav {

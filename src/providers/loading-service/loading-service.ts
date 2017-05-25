@@ -20,8 +20,7 @@ export class LoadingServiceProvider {
    */
   public showLoading(message:string=messages.defaultLoadingMsg) {
     this.loading = this.loadingCtrl.create({
-      content: message,
-      dismissOnPageChange: true
+      content: message
     });
     this.loading.present();
   }

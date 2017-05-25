@@ -9,7 +9,7 @@ import { LoadingServiceProvider } from '../providers/loading-service/loading-ser
 
 import { LoginPage } from '../pages/login/login';
 import { DashboardPage } from '../pages/dashboard/dashboard';
-import { ListPage } from '../pages/list/list';
+import { MissionListPage } from '../pages/mission-list/mission-list';
 
 // Interface for page component.
 export interface PageComponentInterface {
@@ -51,7 +51,7 @@ export class MyApp {
     this.pages = [
       { title: 'Dashboard', component: DashboardPage },
       { title: 'Photos', component: DashboardPage },
-      { title: 'Available Missions', component: ListPage },
+      { title: 'Available Missions', component: MissionListPage },
       { title: 'My Missions', component: DashboardPage },
       { title: 'Chat', component: DashboardPage },
     ];

@@ -5,8 +5,8 @@ import { MyApp } from './app.component';
 
 import { LoginPage } from '../pages/login/login';
 import { DashboardPage } from '../pages/dashboard/dashboard';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
+import { MissionDetailsPage } from '../pages/mission-details/mission-details';
+import { MissionListPage } from '../pages/mission-list/mission-list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,8 +25,8 @@ export const deepLinkConfig: DeepLinkConfig = {
     { component: LoginPage, name: 'Login Page', segment: '*' },
     { component: LoginPage, name: 'Login Page', segment: 'login' },
     { component: DashboardPage, name: 'Dashboard Page', segment: 'dashboard' },
-    { component: ListPage, name: 'Missions Page', segment: 'missions' },
-    { component: ItemDetailsPage, name: 'Mission Details Page', segment: 'missions/:id', defaultHistory: [ ListPage ] },
+    { component: MissionListPage, name: 'Missions Page', segment: 'missions' },
+    { component: MissionDetailsPage, name: 'Mission Details Page', segment: 'missions/:id', defaultHistory: [ MissionListPage ] },
   ]
 };
 
@@ -35,8 +35,8 @@ export const deepLinkConfig: DeepLinkConfig = {
     MyApp,
     LoginPage,
     DashboardPage,
-    ItemDetailsPage,
-    ListPage
+    MissionDetailsPage,
+    MissionListPage
   ],
   imports: [
     BrowserModule,
@@ -48,8 +48,8 @@ export const deepLinkConfig: DeepLinkConfig = {
     MyApp,
     LoginPage,
     DashboardPage,
-    ItemDetailsPage,
-    ListPage
+    MissionDetailsPage,
+    MissionListPage
   ],
   providers: [
     StatusBar,

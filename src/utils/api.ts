@@ -9,7 +9,8 @@ const API = {
     login: '/people/1',
     missionList: '/people/',
     missionListPage: '/people/?page=',
-    missionById: '/people/'
+    missionById: '/people/',
+    planetById: '/planets/'
   }
 }
 export default API;

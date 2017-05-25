@@ -4,17 +4,22 @@ import { NavController, NavParams } from 'ionic-angular';
 import { MissionListServiceProvider } from '../../providers/mission-list-service/mission-list-service';
 import { LoadingServiceProvider } from '../../providers/loading-service/loading-service';
 
-import { ItemDetailsPage } from '../item-details/item-details';
+import { MissionDetailsPage } from '../mission-details/mission-details';
 
 /**
- * Interface for mission detail.
- * Represents the contents within a misson object.
+ * @interface - Interface for mission detail. Represents the contents within a misson object.
  * @param {string} name - Name of the mission.
  * @param {string} gender - Gender of the person involved in mission.
  * @param {string} birth_year - Birth Year of the person involved in mission.
  * @param {string} image_small - Url for the small image.
  * @param {string} image_big - Url for the big image.
  * @param {string} url - Unique Url for the mission.
+ * @param {string} eye_color - Eye color of the character.
+ * @param {string} hair_color - Hair color of the character.
+ * @param {string} skin_color - Skin color of the character.
+ * @param {string} height - Height of the character.
+ * @param {string} mass - Mass of the character.
+ * @param {string} homeworld - Homeworld API link.
  */
 export interface MissionDetailInterface {
   name: string,
@@ -22,19 +27,32 @@ export interface MissionDetailInterface {
   birth_year: string,
   image_small: string,
   image_big: string,
-  url: string
+  url: string,
+  eye_color: string,
+  hair_color: string,
+  skin_color: string,
+  height: string,
+  mass: string,
+  homeworld: string
 };
 
+// Path for temporary images to be loaded with cards.
+export const ImageHelper = {
+  imagePath: 'assets/images/mission-list/',
+  getRandomImageNumber: function():number {
+    return (Math.floor(Math.random() * 5) + 1);
+  }
+};
+
+
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-mission-list',
+  templateUrl: 'mission-list.html'
 })
 /**
  * Class Managing the Missions List Page of the application.
  */
-export class ListPage {
-
-  imagePath: string = 'assets/images/missions-list/';
+export class MissionListPage {
 
   // Next page number to be fetched.
   nextPageNumber: number;
@@ -49,8 +67,10 @@ export class ListPage {
    * @param {NavParams} navParams
    * @param {LoadingServiceProvider} loadingService
    */
-  constructor(public missionListService: MissionListServiceProvider, public navCtrl: NavController,
-    public navParams: NavParams, public loadingService: LoadingServiceProvider) {
+  constructor(public missionListService: MissionListServiceProvider,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public loadingService: LoadingServiceProvider) {
 
     this.items = [];
     this.nextPageNumber = 0;
@@ -64,9 +84,9 @@ export class ListPage {
    * @param {object} item - The actual item clicked.
    */
   itemTapped(event, item) {
-    this.navCtrl.push(ItemDetailsPage, {
+    this.navCtrl.push(MissionDetailsPage, {
       item: item,
-      id: this.getItemId(item)
+      id: this.getMissionId(item)
     });
   }
 
@@ -99,20 +119,21 @@ export class ListPage {
   getMissions(pageNumber?:number) {
     this.loadingService.showLoading();
 
-    this.missionListService.getMissions(pageNumber).then(res => {
+    this.missionListService.getMissions(pageNumber)
+    .then(res => {
       this.nextPageNumber = Number(this.getNextPageNumber(res.next));
       res.results && res.results.map((item) => {
-        let imageRandNumber = (Math.floor(Math.random() * 5) + 1);
-        item.image_small = this.imagePath + imageRandNumber.toString() + '-small.png';
-        item.image_big = this.imagePath + imageRandNumber.toString() + '-big.png';
+        let imageRandNumber = ImageHelper.getRandomImageNumber();
+        item.image_small = ImageHelper.imagePath + imageRandNumber.toString() + '-small.png';
+        item.image_big = ImageHelper.imagePath + imageRandNumber.toString() + '-big.png';
         this.items.push(item);
       });
-    }).catch((err) => {
-      // Should be logged to the logging service ideally
-      console.error('Error from API ', err);
+      return this.items;
+    })
+    .catch(this.handleError)
+    .then(() => {
+      this.loadingService.dismissLoading();
     });
-
-    this.loadingService.dismissLoading();
   }
 
 
@@ -127,8 +148,21 @@ export class ListPage {
    * Get item id from a give item
    * @param {MissionDetailInterface} - item. Object of type mission
    */
-  getItemId(item:MissionDetailInterface):number {
-    return Number(item.url.split('/').slice(-2, -1)[0]);
+  getMissionId(item:MissionDetailInterface):number {
+    if(!item.url) {
+      return 1;
+    } else {
+      return Number(item.url.split('/').slice(-2, -1)[0]);
+    }
+  }
+
+  /**
+   * Handles Errors from API calls.
+   * Ideally should log to the error service. Logging to console temporarily.
+   * @param {object} - err. Error object;
+   */
+  private handleError(err): Promise<any> {
+    return Promise.reject(err.message || err);
   }
 
 }
